@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.content.FileProvider;
+import android.util.Log;
 
 import java.io.File;
 import java.util.HashMap;
@@ -52,7 +53,9 @@ public class EsysFlutterSharePlugin implements MethodCallHandler {
         String fileName = (String) argsMap.get("fileName");
         String filePath = (String) argsMap.get("filePath");
         String title = (String) argsMap.get("title");
+        String message = (String) argsMap.get("message");
 
+        Log.d("ONGGO", "TITLE IS "+title);
         Context activeContext = _registrar.activeContext();
 
         File imageFile;
@@ -66,6 +69,9 @@ public class EsysFlutterSharePlugin implements MethodCallHandler {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("image/*");
         shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+        if (message != null) {
+            shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+        }
         activeContext.startActivity(Intent.createChooser(shareIntent, title));
     }
 

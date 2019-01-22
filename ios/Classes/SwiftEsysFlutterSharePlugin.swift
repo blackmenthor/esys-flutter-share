@@ -41,7 +41,7 @@ public class SwiftEsysFlutterSharePlugin: NSObject, FlutterPlugin {
         let newMessage:String?
 
         if (message == nil) {
-            newMessage = "No Message"
+            newMessage = ""
         }else{
             newMessage = message
         }

@@ -18,6 +18,5 @@ A new flutter plugin project.
 
   s.ios.deployment_target = '9.3'
   s.swift_version = '4.0'
-  s.static_framework = true
 end
 
